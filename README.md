@@ -31,3 +31,9 @@ Here we gonna find some settings that are necessary to start with the project
 
 8. Using an existing requirements.txt
 `$ pip install -r requirements.txt `
+
+9. Making migrates
+` $ python manage.py migrate`
+
+10. Creating modules
+`$ python manage.py startapp products`
