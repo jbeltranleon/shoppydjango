@@ -37,3 +37,13 @@ Here we gonna find some settings that are necessary to start with the project
 
 10. Creating modules
 `$ python manage.py startapp products`
+
+11. Checking our code
+`$ ./manage.py check`
+
+12. We need to add or "install" each appliations into the settings.py
+
+13. Creating migrations
+`$ ./manage.py makemigrations`
+
+
