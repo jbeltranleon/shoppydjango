@@ -46,4 +46,7 @@ Here we gonna find some settings that are necessary to start with the project
 13. Creating migrations
 `$ ./manage.py makemigrations`
 
+14. Creating a superuser
+`$ ./manage.py createsuperuser`
+
 
