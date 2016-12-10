@@ -1,6 +1,6 @@
 ## Cada modulo en python contiene:
 
-* Una carpeta de migrations con un __init__.py el cual como ya sabemos nos indica que es un modulo de python (la parpeta de migraciones)
+* Una carpeta de migrations con un __init__.py el cual como ya sabemos nos indica que es un modulo de python (la Carpeta de migraciones)
 
 Fuera de la carpeta migrations encontramos: 
 
