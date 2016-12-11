@@ -9,7 +9,9 @@ from .models import Product
 def hello_world(request):
     products = Product.objects.order_by('id')
     template = loader.get_template('index.html')
+    title = 'Shoppy - Home'
     context = {
-        'products' : products
+        'products' : products,
+        'title' : title
     }
     return HttpResponse(template.render(context, request))
