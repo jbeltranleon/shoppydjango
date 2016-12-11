@@ -13,11 +13,19 @@
 <body>
 	<div class="container">
 		<div class="row center">
-			<h1 class="flow-text red-text">Take a look of my first template with Django</h1>
+			<h1 class="teal-text">Shoppy</h1>
 		</div>
 		<div class="row center">
-			<img src="http://www.fubiz.net/wp-content/uploads/2016/10/surrealcreaturesgifs6.gif" alt="weird_ghost" height="500" width="500">
+			<h3 class="flow-text">A continuación podrás ver nuestros productos:</h3>
+			{% for product in products %}
+				<li>
+					<div class="chip">
+						{{ product.name }}
+					</div>
+				</li>
+			{% endfor %}
 		</div>
+
 	</div>
 	<!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
