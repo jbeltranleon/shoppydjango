@@ -3,4 +3,5 @@ from . import views
 
 urlpatterns = [
 	url(r'^$', views.hello_world, name='hello'),
+	url(r'^snapchat/', views.snapchat, name='snapchat'),
 ]
