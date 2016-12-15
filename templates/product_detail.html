@@ -8,11 +8,18 @@
 			<h3 class="teal-text">{{ product.name }}</h3>
 		</div>
 		<div class="row center">
-				<li>
-					<p class="flow-text">
-						{{ product.description }}
-					</p>
-				</li>
+			<div class="col s12 m6">
+				<p class="flow-text">
+					{{ product.description }}
+				</p>
+				<p class="flow-text">
+					{{ product.price }}
+				</p>
+			</div>
+			<div class="col s12 m6">
+				<img src="{{ product.image.url }}" alt="">
+			</div>
+
 		</div>
 
 	</div>
