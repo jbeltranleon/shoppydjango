@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.template import loader
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .models import Product
 
@@ -23,5 +23,13 @@ def snapchat(request):
     context = {
         'glasses' : glasses,
         'title' : title
+    }
+    return HttpResponse(template.render(context, request))
+
+def product_detail(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    template = loader.get_template('product_detail.html')
+    context = {
+        'product' : product
     }
     return HttpResponse(template.render(context, request))

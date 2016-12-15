@@ -12,7 +12,9 @@
 			{% for product in products %}
 				<li>
 					<div class="chip">
-						{{ product.name }}
+						<a href="{% url 'product_detail' product.pk %}">
+							{{ product.name }}
+						</a>
 						<img src="{{ product.image.url }}" alt="">
 					</div>
 				</li>
