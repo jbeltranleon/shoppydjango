@@ -16,15 +16,6 @@ def hello_world(request):
     }
     return HttpResponse(template.render(context, request))
 
-def snapchat(request):
-    glasses = Product.objects.filter(id = 1)
-    template = loader.get_template('snapchat.html')
-    title = 'Snap'
-    context = {
-        'glasses' : glasses,
-        'title' : title
-    }
-    return HttpResponse(template.render(context, request))
 
 def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
