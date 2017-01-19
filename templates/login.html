@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block page_title %}
+	{{ title }}
+{% endblock %}
+{% block content %}
+	<div class="container">
+		<div class="row center">
+			<!-- Login -->
+			<div class="col s12 m6">
+				<h3 class="teal-text">¿Ya tienes una cuenta?</h3>
+				<form action="" method="post">
+					{% csrf_token %}
+					<input type="hidden" name="action" value="login">
+
+					<input type="text" name="username">
+					<input type="password" name="password">
+					<button class="btn waves-effect waves-light" type="submit">
+						Login
+		    			<i class="material-icons right">send</i>
+		  			</button>
+		  		</form>
+			</div>
+			<!-- Signup -->
+			<div class="col s12 m6">
+				<h3 class="blue-grey-text">Registrate</h3>
+				<form action="" method="post">
+					{% csrf_token %}
+					<input type="hidden" name="action" value="signup">
+
+					<input type="text" name="username">
+					<input type="password" name="password">
+					<button class="btn waves-effect waves-light blue-grey" type="submit">
+						Signup
+		    			<i class="material-icons right">send</i>
+		  			</button>
+		  		</form>
+			</div>
+		</div>
+		
+	</div>
+{% endblock %}
