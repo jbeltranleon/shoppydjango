@@ -17,14 +17,42 @@
 		<div class="nav-fixed">
 			<nav class="teal lighten-2">
 		    	<div class="nav-wrapper">
-		      	<a href="" class="brand-logo">Shoppy</a>
-		      		<ul id="nav-mobile" class="right hide-on-med-and-down">
-		        		<li><a href="{% url 'clients:logout' %}">Logout</a></li>
-		        		<!-- <li><a href="#">Components</a></li>
-		        		<li><a href="#">JavaScript</a></li> -->
-		      		</ul>
-		    	</div>
-		  	</nav>
+      				<a href="#!" class="brand-logo">Shoppy</a>
+      				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      				<ul class="right hide-on-med-and-down">
+        				<li>
+        					{% if user.is_authenticated %}
+        						<a href="#!">{{user.username}}</a>
+        					{% else %}
+        						<a href="{% url 'clients:authentication' %}">Login</a>
+        					{% endif %}
+        				</li>
+        				<li>
+							{% if user.is_authenticated %}
+        						<a href="{% url 'clients:logout' %}">
+        							Logout
+        						</a>
+        					{% endif %}
+        				</li>
+      				</ul>
+      				<ul class="side-nav" id="mobile-demo">
+        				<li>
+        					{% if user.is_authenticated %}
+        						<a href="#!">{{user.username}}</a>
+        					{% else %}
+        						<a href="{% url 'clients:authentication' %}">Login</a>
+        					{% endif %}
+        				</li>
+        				<li>
+							{% if user.is_authenticated %}
+        						<a href="{% url 'clients:logout' %}">
+        							Logout
+        						</a>
+        					{% endif %}
+        				</li>
+      				</ul>
+    			</div>
+  			</nav>
 		</div>
 	</header>
 	
@@ -58,7 +86,7 @@
 	<!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <!-- Compiled and minified JavaScript -->
-  	<script src="{ static 'js/materialize.js' }"></script>
-  	
+  	<script src="{% static 'js/materialize.js' %}"></script>
+  	<script src="{% static 'js/code.js' %}"></script>
 </body>
 </html>
