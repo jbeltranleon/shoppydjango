@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block page_title %}
+	{{ title }}
+{% endblock %}
+{% block content %}
+	<div class="container">
+		<div class="row center">
+			<h3 class="teal-text">Te has registrado con éxito</h3>
+		</div>
+		<div class="row center">
+			<a href="{% url 'authentication' %}" class="flow-text">ingresar</a>
+		</div>
+
+	</div>
+{% endblock %}
