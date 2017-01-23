@@ -8,13 +8,13 @@
 			<h3 class="teal-text">¿Buscas un nuevo dispositivo o accesorio?</h3>
 		</div>
 		<div class="row center">
-			<a href="{% url 'new_product' %}" class="flow-text teal-text">Agregar nuevo producto</a>
+			<a href="{% url 'products:new_product' %}" class="flow-text teal-text">Agregar nuevo producto</a>
 			<h3 class="flow-text">A continuación podrás ver nuestros productos:</h3>
 
 			{% for product in products %}
 				<li>
 					<div class="chip">
-						<a href="{% url 'product_detail' product.pk %}">
+						<a href="{% url 'products:product_detail' product.pk %}">
 							{{ product.name }}
 						</a>
 						<img src="{{ product.image.url }}" alt="">
