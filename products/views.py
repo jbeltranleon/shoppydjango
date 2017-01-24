@@ -1,21 +1,12 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView
 
 from .models import Product
 from .forms import ProductForm
 
 # Create your views here.
-
-def hello_world(request):
-    products = Product.objects.order_by('id')
-    template = loader.get_template('index.html')
-    title = 'Shoppy - Home'
-    context = {
-        'products' : products,
-        'title' : title
-    }
-    return HttpResponse(template.render(context, request))
 
 
 def product_detail(request, pk):
@@ -43,3 +34,7 @@ def new_product(request):
         'form': form
     }
     return HttpResponse(template.render(context, request))
+
+
+class ProductList(ListView):
+    model = Product
