@@ -14,7 +14,7 @@
 			{% for product in object_list %}
 				<li>
 					<div class="chip">
-						<a href="{% url 'products:product_detail' product.pk %}">
+						<a href="{% url "products:detail" product.id %}">
 							{{ product.name }}
 						</a>
 						<img src="{{ product.image.url }}" alt="">
