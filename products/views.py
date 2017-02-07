@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.contrib.auth.decorators import login_required
+from .mixins import LoginRequiredMixin
 
 from .models import Product
 from .forms import ProductForm
@@ -33,5 +34,5 @@ def new_product(request):
 class ProductList(ListView):
     model = Product
 
-class ProductDetail(DetailView):
+class ProductDetail(LoginRequiredMixin, DetailView):
     model = Product
