@@ -3,12 +3,14 @@ from django.template import loader
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
+from django.contrib.auth.decorators import login_required
 
 from .models import Product
 from .forms import ProductForm
 
 # Create your views here.
 
+@login_required()
 def new_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
