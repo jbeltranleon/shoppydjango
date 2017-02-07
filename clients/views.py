@@ -16,7 +16,10 @@ def authentication(request):
         elif action == 'login':
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('/')
+            if request.GET.get('next'):
+                return redirect(request.GET['next'])
+            else:
+                return redirect('/')
 
     return render(request, 'login.html', {})
 
