@@ -5,31 +5,19 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.contrib.auth.decorators import login_required
 from .mixins import LoginRequiredMixin
+from django.views.generic.edit import CreateView
+
+from django.core.urlresolvers import reverse_lazy
 
 from .models import Product
 from .forms import ProductForm
 
 # Create your views here.
 
-@login_required()
-def new_product(request):
-    if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
-
-        if form.is_valid():
-            product = form.save()
-            product.save()
-            return HttpResponseRedirect('/')
-    else:  
-        form = ProductForm()
-
-    template = loader.get_template('new_product.html')
-    title = 'Nuevo Producto'
-    context = {
-        'form': form
-    }
-    return HttpResponse(template.render(context, request))
-
+class ProductCreate(LoginRequiredMixin, CreateView):
+    model = Product
+    success_url = reverse_lazy('products:home')
+    fields = ['name', 'description', 'category', 'price', 'image']
 
 class ProductList(ListView):
     model = Product
