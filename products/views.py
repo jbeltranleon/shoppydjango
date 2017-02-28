@@ -6,6 +6,8 @@ from django.views.generic.detail import DetailView
 from django.contrib.auth.decorators import login_required
 from .mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
+from django.views.generic.edit import UpdateView
+from django.views.generic.edit import DeleteView
 
 from django.core.urlresolvers import reverse_lazy
 
@@ -18,9 +20,20 @@ class ProductCreate(LoginRequiredMixin, CreateView):
     model = Product
     success_url = reverse_lazy('products:home')
     fields = ['name', 'description', 'category', 'price', 'image']
+    title = Product.name
 
 class ProductList(ListView):
     model = Product
 
 class ProductDetail(LoginRequiredMixin, DetailView):
     model = Product
+
+class ProductUpdate(UpdateView):
+    model = Product
+    success_url = reverse_lazy('products:home')
+    fields = ['name', 'description', 'category', 'price', 'image']
+
+
+class ProductDelete(DeleteView):
+    model = Product
+    success_url = reverse_lazy('products:home')

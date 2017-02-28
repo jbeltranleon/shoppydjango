@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block page_title %}
+	{{ title }}
+{% endblock %}
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col s12">
+				
+				<form method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					<p class="flow-text center">
+						¿Realmente que deseas borrar el producto "{{ object }}"?
+					</p>
+				
+			</div>
+		</div>
+		<div class="row center">
+			<a class="btn red waves-effect waves-light" href="{% url "products:home"%}">
+		  		Espera, no lo borres
+		  		<i class="material-icons right">clear</i>
+		  	</a>
+			<button class="btn green waves-effect waves-light" type="submit" value="Submit">Si, borralo de una vez
+		    	<i class="material-icons right">done</i>
+		  	</button>
+		  	
+		  	</form>
+		</div>
+	</div>
+	
+	
+{% endblock %}

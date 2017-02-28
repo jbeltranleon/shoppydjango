@@ -19,6 +19,8 @@
 						</a>
 						<img src="{{ product.image.url }}" alt="">
 					</div>
+					<a href="{% url "products:edit" product.id %}">Editar</a> | 
+                	<a href="{% url "products:delete" product.id %}">Borrar</a> 
 				</li>
 			{% endfor %}
 		</div>
