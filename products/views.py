@@ -28,12 +28,12 @@ class ProductList(ListView):
 class ProductDetail(LoginRequiredMixin, DetailView):
     model = Product
 
-class ProductUpdate(UpdateView):
+class ProductUpdate(LoginRequiredMixin, UpdateView):
     model = Product
     success_url = reverse_lazy('products:home')
     fields = ['name', 'description', 'category', 'price', 'image']
 
 
-class ProductDelete(DeleteView):
+class ProductDelete(LoginRequiredMixin, DeleteView):
     model = Product
     success_url = reverse_lazy('products:home')
