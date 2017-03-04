@@ -13,6 +13,7 @@ from .models import Product
 from .forms import ProductForm
 
 import os
+from datetime import date
 from io import BytesIO
 from reportlab.lib.pagesizes import A4, cm
 from reportlab.lib.styles import getSampleStyleSheet
@@ -53,6 +54,7 @@ def reportPDF(request):
 
     #Create the PDF object, using the BytesIO object as it's "file."
     buffer = BytesIO()
+    fecha = date.today()
     c = canvas.Canvas(buffer, pagesize=A4)
 
     #Header
@@ -61,6 +63,10 @@ def reportPDF(request):
     c.drawString(30, 750, 'Shoppy')
     c.setFont('Helvetica', 12)
     c.drawString(30, 735, ' Web Store')
+
+    c.setFont('Helvetica-Bold', 12)
+    c.drawString(480, 750, fecha.__str__())
+    c.line(460,747,560,747)
 
     #Save PDF
     c.save()
