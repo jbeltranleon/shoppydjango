@@ -27,15 +27,24 @@
         						<a href="{% url 'clients:authentication' %}">Login</a>
         					{% endif %}
         				</li>
+                <li>
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'products:reportPDF' %}">Reporte</a>
+                  {% endif %}
+                </li>
         				<li>
 							{% if user.is_authenticated %}
         						<a href="{% url 'clients:logout' %}">
         							Logout
         						</a>
+
         					{% endif %}
+
         				</li>
+                
       				</ul>
       				<ul class="side-nav" id="mobile-demo">
+
         				<li>
         					{% if user.is_authenticated %}
         						<a href="#!">{{user.username}}</a>
@@ -43,6 +52,11 @@
         						<a href="{% url 'clients:authentication' %}">Login</a>
         					{% endif %}
         				</li>
+                <li>
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'products:reportPDF' %}">Reporte</a>
+                  {% endif %}
+                </li>
         				<li>
 							    {% if user.is_authenticated %}
         						<a href="{% url 'clients:logout' %}">
