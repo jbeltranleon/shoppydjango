@@ -1,6 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect
-from django.template import loader
-from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.contrib.auth.decorators import login_required
@@ -14,7 +12,14 @@ from django.core.urlresolvers import reverse_lazy
 from .models import Product
 from .forms import ProductForm
 
-# Create your views here.
+import os
+from io import BytesIO
+from reportlab.lib.pagesizes import A4, cm
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.enums import TA_CENTER
+from reportlab.lib import colors
+from reportlab.pdfgen import canvas
+from reportlab.platypus import Paragraph, Table, TableStyle, Image
 
 class ProductCreate(LoginRequiredMixin, CreateView):
     model = Product
@@ -37,3 +42,7 @@ class ProductUpdate(LoginRequiredMixin, UpdateView):
 class ProductDelete(LoginRequiredMixin, DeleteView):
     model = Product
     success_url = reverse_lazy('products:home')
+
+
+def reportPDF():
+    pass
