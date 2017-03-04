@@ -44,5 +44,30 @@ class ProductDelete(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('products:home')
 
 
-def reportPDF():
-    pass
+def reportPDF(request):
+    products = Product.objects.order_by('id')
+
+    #Create The HttpResponse headers with PDF
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="Stock_Report.pdf"'
+
+    #Create the PDF object, using the BytesIO object as it's "file."
+    buffer = BytesIO()
+    c = canvas.Canvas(buffer, pagesize=A4)
+
+    #Header
+    c.setLineWidth(.3)
+    c.setFont('Helvetica', 22)
+    c.drawString(30, 750, 'Shoppy')
+    c.setFont('Helvetica', 12)
+    c.drawString(30, 735, ' Web Store')
+
+    #Save PDF
+    c.save()
+
+    #Get the value of BytesIO buffer and write response
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+
+    return response
