@@ -68,6 +68,53 @@ def reportPDF(request):
     c.drawString(480, 750, fecha.__str__())
     c.line(460,747,560,747)
 
+    #Table Header
+    styles = getSampleStyleSheet()
+    style_header = styles["Normal"]
+    style_header.alignment = TA_CENTER
+    style_header.fontSize = 10
+
+    name = Paragraph('''Name''', style_header)
+    description = Paragraph('''Description''', style_header)
+    category = Paragraph('''Category''', style_header)
+    price = Paragraph('''Price''', style_header)
+
+    data = []
+    data.append([name, description, category, price])
+
+    #Table Body
+    styles = getSampleStyleSheet()
+    style_body = styles["BodyText"]
+    style_body.alignment =TA_CENTER
+    style_body.fontSize = 7
+
+    width, height = A4
+    high = 650
+    for product in products:
+        this_product = [product.name,
+                        product.description,
+                        product.category,
+                        product.price,]
+        data.append(this_product)
+        high = high -18
+
+    #Table Size
+    width, height = A4
+    table = Table(data, colWidths=[1.9 * cm,
+                                    9.5 * cm,
+                                    1.9 * cm,
+                                    1.9 * cm,
+                                    1.9 * cm,
+                                    1.9 * cm,])
+    table.setStyle(TableStyle([
+        ('INERGRID', (0, 0), (-1, -1), 0.25, colors.black),
+        ('BOX', (0, 0), (-1, -1), 0.25, colors.black),]))
+
+    #PDF Size
+    table.wrapOn(c, width, height)
+    table.drawOn(c, 30, high)
+    c.showPage() #Save Page
+
     #Save PDF
     c.save()
 
