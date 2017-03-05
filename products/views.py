@@ -47,6 +47,7 @@ class ProductDelete(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('products:home')
 
 
+@login_required()
 def reportPDF(request):
     products = Product.objects.order_by('id')
 
@@ -121,6 +122,7 @@ def reportPDF(request):
 
     return response
 
+@login_required()
 def reportCSV(request):
     products = Product.objects.order_by('id')
     fecha = date.today()
