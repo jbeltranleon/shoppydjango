@@ -70,29 +70,25 @@ def reportPDF(request):
 
     #Table Header
     styles = getSampleStyleSheet()
-    style_header = styles["Normal"]
-    style_header.alignment = TA_CENTER
-    style_header.fontSize = 10
+    styleBH = styles["Normal"]
+    styleBH.alignment = TA_CENTER
+    styleBH.fontSize = 10
 
-    name = Paragraph('''Name''', style_header)
-    description = Paragraph('''Description''', style_header)
-    category = Paragraph('''Category''', style_header)
-    price = Paragraph('''Price''', style_header)
+    name = Paragraph('''NAME''', styleBH)
+    category = Paragraph('''CATEGORY''', styleBH)
+    price = Paragraph('''PRICE''', styleBH)
 
     data = []
-    data.append([name, description, category, price])
+    data.append([name, category, price])
 
     #Table Body
-    styles = getSampleStyleSheet()
-    style_body = styles["BodyText"]
-    style_body.alignment =TA_CENTER
-    style_body.fontSize = 7
+    styleN = styles["BodyText"]
+    styleN.alignment =TA_CENTER
+    styleN.fontSize = 7
 
-    width, height = A4
     high = 650
     for product in products:
         this_product = [product.name,
-                        product.description,
                         product.category,
                         product.price,]
         data.append(this_product)
@@ -100,14 +96,12 @@ def reportPDF(request):
 
     #Table Size
     width, height = A4
-    table = Table(data, colWidths=[1.9 * cm,
-                                    9.5 * cm,
-                                    1.9 * cm,
-                                    1.9 * cm,
-                                    1.9 * cm,
-                                    1.9 * cm,])
+    table = Table(data, colWidths=[8 * cm,
+                                    6 * cm,
+                                    5 * cm,
+                                    ])
     table.setStyle(TableStyle([
-        ('INERGRID', (0, 0), (-1, -1), 0.25, colors.black),
+        ('INNERGRID', (0, 0), (-1, -1), 0.25, colors.teal),
         ('BOX', (0, 0), (-1, -1), 0.25, colors.black),]))
 
     #PDF Size
