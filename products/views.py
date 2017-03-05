@@ -22,6 +22,8 @@ from reportlab.lib import colors
 from reportlab.pdfgen import canvas
 from reportlab.platypus import Paragraph, Table, TableStyle, Image
 
+import csv
+
 class ProductCreate(LoginRequiredMixin, CreateView):
     model = Product
     success_url = reverse_lazy('products:home')
@@ -116,5 +118,23 @@ def reportPDF(request):
     pdf = buffer.getvalue()
     buffer.close()
     response.write(pdf)
+
+    return response
+
+def reportCSV(request):
+    products = Product.objects.order_by('id')
+    fecha = date.today()
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="Stock_Report.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['Shoppy', 'Web Store', fecha])
+    writer.writerow(['NAME', 'CATEGORY', 'PRICE'])
+
+    for product in products:
+        writer.writerow([product.name,
+                        product.category,
+                        product.price,])
 
     return response

@@ -10,5 +10,6 @@ urlpatterns = [
 		views.ProductUpdate.as_view(), name='edit'),
     url(r'^product/delete/(?P<pk>[0-9]+)/$', 
     	views.ProductDelete.as_view(), name='delete'),
-    url(r'^report/$', views.reportPDF, name='reportPDF'),
+    url(r'^report/pdf$', views.reportPDF, name='reportPDF'),
+    url(r'^report/csv$', views.reportCSV, name='reportCSV'),
 ]

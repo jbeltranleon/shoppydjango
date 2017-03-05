@@ -29,7 +29,12 @@
         				</li>
                 <li>
                   {% if user.is_authenticated %}
-                  <a href="{% url 'products:reportPDF' %}">Reporte</a>
+                  <a href="{% url 'products:reportCSV' %}">CSV</a>
+                  {% endif %}
+                </li>
+                <li>
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'products:reportPDF' %}">PDF</a>
                   {% endif %}
                 </li>
         				<li>
@@ -54,7 +59,12 @@
         				</li>
                 <li>
                   {% if user.is_authenticated %}
-                  <a href="{% url 'products:reportPDF' %}">Reporte</a>
+                  <a href="{% url 'products:reportPDF' %}">PDF</a>
+                  {% endif %}
+                </li>
+                <li>
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'products:reportCSV' %}">CSV</a>
                   {% endif %}
                 </li>
         				<li>
