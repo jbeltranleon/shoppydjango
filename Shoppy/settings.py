@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['localhost', '192.168.0.7']
 INSTALLED_APPS = [
     'clients.apps.ClientsConfig',
     'products.apps.ProductsConfig',
+    'flat_responsive',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
