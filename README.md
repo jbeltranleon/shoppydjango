@@ -2,7 +2,8 @@
 
 ## Get started
 
-### Use pip to install python-django and virtualenv 
+### Use pip to install python-django and virtualenv(just for python 2.7)
+### For python 3.x you can use venv (included into it) 
 
 
 Here we gonna find some settings that are necessary to start with the project
@@ -11,7 +12,9 @@ Here we gonna find some settings that are necessary to start with the project
  `$ mkdir Django`
 
 2. Create a new virtual enviroment
- `$ virtualenv entornovirtual`
+ `$ virtualenv entornovirtual` (python 2.7)
+ `$ python -m venv entorno virtual` (python 3.x)
+
 
 3. Activate the virtual enviroment
  `$ source entornovirtual/bin/activate`
